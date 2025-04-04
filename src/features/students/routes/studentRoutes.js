@@ -3,6 +3,8 @@ const { getStudents, getStudentById, addStudent, updateStudent, deleteStudent } 
 
 const router = express.Router();
 
+
+
 // GET /api/students - Fetch all students
 router.get('/students', getStudents);
 

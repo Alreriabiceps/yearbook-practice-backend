@@ -3,12 +3,17 @@ const Student = require('../models/studentModel');
 // Fetch all students
 const getStudents = async (req, res) => {
   try {
+    if (req.query.course) {
+      const students = await Student.find({ courseMajor: req.query.course });
+      return res.status(200).json(students);
+    }
     const students = await Student.find();
     res.status(200).json(students);
   } catch (error) {
     res.status(500).json({ message: 'Error fetching students', error: error.message });
   }
 };
+
 
 // Fetch a single student by ID
 const getStudentById = async (req, res) => {
